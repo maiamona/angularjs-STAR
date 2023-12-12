@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/ui.css" />
+</head>
+
+<body ng-controller="listaTelefonica">
+ <div ng-view></div>
+  <div ng-include="'View/footer.html'"></div>
+</body>
+<script src="./js/angular/angular.min.js"></script>
+<script src="./js/angular/angular-messages.min.js"></script>
+<script src="./js/my/app.js"></script>
+<script src="./js/my/script.js"></script>
+<script src="./js/my/angular-locale_pt-br.js"></script>
+<!-- <script src="./js/my/angular-locale_fr-fr.js"></script> -->
+<script src="./js/services/contatosApiService.js"></script>
+<script src="./js/services/operadorasAPIService.js"></script>
+<script src="./js/services/serialGeneratorService.js"></script>
+<script src="./js/Config/serialGeneratorConfig.js"></script>
+<script src="./js/Value/configValue.js"></script>
+<script src="./js/Filters/nameFilter.js"></script>
+<script src="./js/Filters/elipsisFilter.js"></script>
+<script src="./js/Directives/uiAlertDirective.js"></script>
+<script src="./js/Directives/uiDateDirective.js"></script>
+<script src="./js/Directives/uiAccordionDirective.js"></script>
+
+</html>
