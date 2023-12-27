@@ -1,35 +1,42 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="App">
-
+<html ng-app="listaTelefonica">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="./bootstrap/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="./css/style.css" />
-  <link rel="stylesheet" href="./css/ui.css" />
+	<meta charset="UTF-8">
+	<title>Lista Telefonica</title>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<link rel="stylesheet" type="text/css" href="css/ui.css">
+	<script src="lib/angular/angular.js"></script>
+	<script src="lib/angular/angular-route.js"></script>
+	<script src="lib/angular/angular-messages.js"></script>
+	<script src="lib/serialGenerator/serialGenerator.js"></script>
+	<script src="lib/ui/ui.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers/listaTelefonicaCtrl.js"></script>
+	<script src="js/controllers/novoContatoCtrl.js"></script>
+	<script src="js/controllers/detalhesContatoCtrl.js"></script>
+	<script src="js/services/contatosAPIService.js"></script>
+	<script src="js/services/operadorasAPIService.js"></script>
+	<script src="js/config/serialGeneratorConfig.js"></script>
+	<script src="js/config/routeConfig.js"></script>
+	<script src="js/config/interceptorsConfig.js"></script>
+	<script src="js/value/configValue.js"></script>
+	<script src="js/filters/nameFilter.js"></script>
+	<script src="js/filters/ellipsisFilter.js"></script>
+	<script src="js/filters/upperFilter.js"></script>
+	<script src="js/directives/uiAlertDirective.js"></script>
+	<script src="js/directives/uiDateDirective.js"></script>
+	<script src="./js/interceptors/timestampinterceptor.js"></script>
+	<script src="./js/interceptors/errorInterceptor.js"></script>
+	<script src="./js/interceptors/loadingInterceptor.js"></script>
 </head>
-
-<body ng-controller="listaTelefonica">
- <div ng-view></div>
-  <div ng-include="'View/footer.html'"></div>
+<body>
+	<div class="jumbotron" ng-show="loading">
+<h4>Carregando, por favor aguarde...</h4>
+	</div>
+	<!-- {{loading}} -->
+	<div ng-hide="loading">
+	<div ng-view></div>
+	<div ng-include="'view/footer.html'"></div>
+</div>
 </body>
-<script src="./js/angular/angular.min.js"></script>
-<script src="./js/angular/angular-messages.min.js"></script>
-<script src="./js/my/app.js"></script>
-<script src="./js/my/script.js"></script>
-<script src="./js/my/angular-locale_pt-br.js"></script>
-<!-- <script src="./js/my/angular-locale_fr-fr.js"></script> -->
-<script src="./js/services/contatosApiService.js"></script>
-<script src="./js/services/operadorasAPIService.js"></script>
-<script src="./js/services/serialGeneratorService.js"></script>
-<script src="./js/Config/serialGeneratorConfig.js"></script>
-<script src="./js/Value/configValue.js"></script>
-<script src="./js/Filters/nameFilter.js"></script>
-<script src="./js/Filters/elipsisFilter.js"></script>
-<script src="./js/Directives/uiAlertDirective.js"></script>
-<script src="./js/Directives/uiDateDirective.js"></script>
-<script src="./js/Directives/uiAccordionDirective.js"></script>
-
 </html>
