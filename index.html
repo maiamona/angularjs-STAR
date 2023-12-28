@@ -207,6 +207,155 @@
 	<button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="contatoForm.$invalid">Adicionar Contato</button>
 	<a class="btn btn-warning btn-block" href="#/Contatos">CANCELAR</a>
 </div>
+		<div class="jumbotron" ng-controller="listaTelefonica">
+    <!-- <h3>{{message}}</h3> -->
+
+     <!-- {{message2}} -->
+    <!-- {{contatos}} -->
+    <!-- {{$id}} -->
+
+    <!-- <input type="text" ng-model="errado"> -->
+
+    <!-- <div ui-alert></div> -->
+    <!-- <ui-alert></ui-alert> -->
+    <!-- <ui-alert title="Ops, aconteceu um problema!" message="errado"></ui-alert> -->
+    <ui-alert ng-if="errado" title="Ops, aconteceu um problema!">
+      {{errado}}
+      <!-- {{$id}}
+Não foi possivel carregar os dados! -->
+    </ui-alert>
+    <ui-alert ng-if="errado" title="Série sobre AngularJs">
+      Episodio 10 - Criando Diretivas - Parte 1
+    </ui-alert>
+    <!-- <div class="ui-alert">
+      <div class="ui-alert-title">
+        Ops, aconteceu um problema!
+      </div>
+      <div class="ui-alert-message">
+        {{errado}}
+      </div>
+    </div> -->
+    <ui-accordions>
+      <ui-accordion message="Accordion 1">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam nostrum, necessitatibus consectetur assumenda
+        doloribus quis dicta vitae, velit veniam, commodi qui deserunt? Dicta temporibus cumque inventore assumenda
+        quibusdam quisquam voluptatem?
+      </ui-accordion>
+
+      <ui-accordion message="Accordion 2">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident magnam sapiente iure, vero soluta amet,
+        placeat dolorum dicta esse dolore voluptate obcaecati? Possimus cupiditate ullam aperiam distinctio, voluptatem
+        eos natus.
+      </ui-accordion>
+      <ui-accordion message="Accordion 3">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident magnam sapiente iure, vero soluta amet,
+        placeat dolorum dicta esse dolore voluptate obcaecati? Possimus cupiditate ullam aperiam distinctio, voluptatem
+        eos natus.
+      </ui-accordion>
+      <ui-accordion message="Accordion 4">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident magnam sapiente iure, vero soluta amet,
+        placeat dolorum dicta esse dolore voluptate obcaecati? Possimus cupiditate ullam aperiam distinctio, voluptatem
+        eos natus.
+      </ui-accordion>
+      <ui-accordion message="Accordion 5">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident magnam sapiente iure, vero soluta amet,
+        placeat dolorum dicta esse dolore voluptate obcaecati? Possimus cupiditate ullam aperiam distinctio, voluptatem
+        eos natus.
+      </ui-accordion>
+    </ui-accordions>
+   
+    <hr />
+    <input class="form-control" type="text" ng-model="criterioDeBusca" placeholder="O que voce esta buscando?" />
+    <table class="table table-borderless">
+      <tr>
+        <th></th>
+        <th>Serial</th>
+        <th><a href="" ng-click="ordenarPor('nome')">NOME</a></th>
+        <th><a href="" ng-click="ordenarPor('telefone')">TELEFONE</a></th>
+        <th>
+          <a href="" ng-click="ordenarPor('operadora.nome')">OPERADORA</a>
+        </th>
+        <th>DATA</th>
+        <!-- <th></th> -->
+      </tr>
+      <!-- <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter:'Mona'"> -->
+      <!-- <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter:criterioDeBusca | orderBy:'-nome'"> -->
+      <!-- <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter:criterioDeBusca | orderBy:'nome':true"> -->
+      <!-- <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter:criterioDeBusca | orderBy:criterioDeOrdenacao:true"> -->
+      <tr ng-class="{'selecionado negrito': contato.selecionado}"
+        ng-repeat="contato in contatos | filter:criterioDeBusca | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao">
+        <!-- <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | limitTo:2 | filter:criterioDeBusca | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao"> -->
+        <!-- <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter:{nome: criterioDeBusca}"> -->
+        <td><input type="checkbox" ng-model="contato.selecionado" /></td>
+        <td>{{contato.serial}}</td>
+        <!-- <td>{{contato.nome | name | ellipsis:15}}</td> -->
+        <td>{{contato.nome | name | ellipsis:15}}</td>
+        <!-- <td>{{contato.nome | uppercase | limitTo:3}}</td> -->
+        <td>{{contato.telefone}}</td>
+        <td>{{contato.operadora.nome | uppercase}}</td>
+        <!-- <td>{{contato.data | date:'EEE dd/MM//yyyy HH:mm'}}</td> -->
+        <td>{{contato.data | date:'dd/MM//yyyy'}}</td>
+        <!-- <td><div style="width: 20px; height: 20px;" ng-style="{'background-color': contato.cor}"></div></td> -->
+        <!-- <td ng-repeat="(key,value) in contato">
+                    {{ key + ' - ' + value}}
+                </td> -->
+      </tr>
+    </table>
+    <hr />
+    <!-- {{contatoForm.$valid}} 
+       {{contatoForm.$invalid}}  -->
+    <form name="contatoForm">
+      <input class="form-control" type="text" name="nome" ng-model="contato.nome" placeholder="Nome" ng-required="true"
+        ng-minlength="10" />
+      <input class="form-control" type="text" name="telefone" ng-model="contato.telefone" placeholder="Telefone"
+        ng-required="true" ng-pattern="/^\d{4,5}-\d{4}$/" />
+      <!-- {{contato.data}} -->
+      <input class="form-control" type="text" name="data" ng-model="contato.data" placeholder="Data" ui-date>
+      <!-- <select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras"> -->
+      <!-- <select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome for operadora in operadoras"> -->
+      <!-- <select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome for operadora in operadoras | orderBy:'nome'"> -->
+      <select class="form-control" ng-model="contato.operadora"
+        ng-options="operadora.nome + ' (' + (operadora.preco | currency) + ')' for operadora in operadoras | orderBy:'nome'">
+        <option value="">Selecione uma operadora</option>
+      </select>
+    </form>
+    <!-- <div ng-messages="contatoForm.nome.$error" class="alert alert-danger"> -->
+    <div ng-show="contatoForm.nome.$dirty" ng-messages="contatoForm.nome.$error">
+      <!-- <div ng-show="contatoForm.nome.$error.$invalid && contatoForm.nome.$dirty" class="alert alert-danger"> -->
+      <!-- <div ng-show="contatoForm.nome.$error.required && contatoForm.nome.$dirty" class="alert alert-danger">
+      Por favor preencha o nome 
+    </div> -->
+      <div ng-message="required" class="alert alert-danger">
+        Por favor preencha o nome
+      </div>
+      <!-- <div ng-show="contatoForm.nome.$error.minlength && contatoForm.nome.$dirty" class="alert alert-danger"> -->
+      <!-- <div ng-show="contatoForm.nome.$error.minlength" class="alert alert-danger">
+      O campo nome deve ter no minimo 10 caracteres 
+    </div> -->
+      <div ng-message="minlength" class="alert alert-danger">
+        O campo nome deve ter no minimo 10 caracteres
+      </div>
+    </div>
+    <div ng-show="contatoForm.telefone.$error.required && contatoForm.telefone.$dirty" class="alert alert-danger">
+      Por favor preencha o telefone
+    </div>
+    <div ng-show="contatoForm.telefone.$error.pattern" class="alert alert-danger">
+      O campo telefone deve ter o formato DDDDD-DDDD
+    </div>
+    <!-- <div ng-show="contatoForm.telefone.$error.pattern && contatoForm.telefone.$dirty" class="alert alert-danger">
+      Por favor preencha o telefone
+    </div> -->
+    <!-- <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone">Adicionar Contatos</button> -->
+    <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="contatoForm.$invalid">
+      Adicionar Contatos
+    </button>
+    <button class="btn btn-danger btn-block" ng-if="isContatoSelecionado(contatos)" ng-click="apagarContato(contatos)"
+      ng-disabled="!isContatoSelecionado(contatos)">
+      Apagar Contatos
+    </button>
+    <!-- {{contato}} -->
+    <!-- {{100.26 | number:1}} -->
+  </div>
 	<div ng-include="'view/footer.html'"></div>
 </div>
 </body>
