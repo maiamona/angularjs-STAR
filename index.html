@@ -147,6 +147,24 @@
 	<button class="btn btn-danger btn-block" ng-click="apagarContatos(contatos)" ng-if="hasContatoSelecionado">Apagar Contatos</button>
 </div>
 		<div class="jumbotron">
+	<h4>DETALHES CONTACTO</h4>
+	<table class="table table-striped table-bordered text-center">
+		<tr>
+			<td>NOME</td>
+			<td>{{contato.nome}}</td>
+		</tr>
+		<tr>
+			<td>TELEFONE</td>
+			<td>{{contato.telefone}}</td>
+		</tr>
+		<tr>
+			<td>DATA</td>
+			<td>{{contato.data | date:"dd/MM/yyyy"}}</td>
+		</tr>
+	</table>
+	<a class="btn btn-warning btn-block" href="#/contatos">Voltar</a>
+</div>
+		<div class="jumbotron">
 	<form name="contatoForm">
 		<select class="form-control" ng-model="contato.tipo">
 			<option value="">Selecione o tipo((Apenas para texte) *Nota: Acrescenta apenas um nome abaixo.)</option>
